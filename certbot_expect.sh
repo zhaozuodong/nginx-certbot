@@ -24,5 +24,9 @@ expect {
         send "Y\n"
         exp_continue
     }
+    "Do you want to expand and replace this existing certificate with the new certificate?" {
+        send "\n"
+        exp_continue
+    }
     eof
 }
