@@ -10,9 +10,6 @@ jobs:
     runs-on: ubuntu-latest  # 使用最新的 Ubuntu 环境进行构建
 
     steps:
-    - name: Output Docker Username
-      run: echo "DOCKER_USERNAME is ${{ secrets.DOCKER_USERNAME }}"
-
     - name: Checkout Repository
       uses: actions/checkout@v2  # 获取代码仓库
 

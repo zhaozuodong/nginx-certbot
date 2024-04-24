@@ -1,6 +1,6 @@
 FROM nginx:1.23
 
-RUN apt-get update && apt-get install -y vim cron expect certbot python3-certbot-nginx
+RUN apt-get update && apt-get install -y certbot python3-certbot-nginx expect vim cron
 
 COPY certbot_expect.sh /usr/local/bin/certbot_expect.sh
 RUN chmod 777 /usr/local/bin/certbot_expect.sh
