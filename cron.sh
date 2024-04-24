@@ -1,5 +1,7 @@
 #!/bin/bash
 
+wait
+
 # 启动cron服务
 service cron start
 
