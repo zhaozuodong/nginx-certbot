@@ -28,5 +28,9 @@ expect {
         send "\n"
         exp_continue
     }
+    "(E)xpand/(C)ancel" {
+        send "E\n"
+        exp_continue
+    }
     eof
 }
