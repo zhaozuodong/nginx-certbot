@@ -10,3 +10,5 @@ cron_status=$(service cron status)
 
 # 输出cron服务状态
 echo "Cron 服务状态：$cron_status"
+
+nginx -s stop
