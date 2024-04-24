@@ -25,5 +25,3 @@ expect {
     }
     eof
 }
-
-interact
