@@ -5,17 +5,16 @@ set timeout -1
 spawn certbot --nginx --register-unsafely-without-email
 
 expect {
-    "Cert not yet due for renewal" {
-        send "c\n"
-        exp_continue
-    }
     "No names were found in your configuration files" {
         send "c\n"
         exp_continue
     }
-    "Select the appropriate number" {
+    "blank to select all options shown" {
         send "\n"
         exp_continue
+    }
+    "Cert not yet due for renewal" {
+        exit 0
     }
     "2: Renew & replace the certificate" {
         send "2\n"

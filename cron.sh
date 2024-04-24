@@ -2,13 +2,18 @@
 
 wait
 
-# 启动cron服务
 service cron start
 
-# 检查cron服务是否成功启动
 cron_status=$(service cron status)
 
-# 输出cron服务状态
-echo "Cron 服务状态：$cron_status"
+echo "cron status：$cron_status"
 
-nginx -s stop
+nginx_process=$(ps aux | grep -v grep | grep nginx)
+
+if [ -z "$nginx_process" ]; then
+    echo "nginx is not running."
+else
+    # 停止Nginx服务
+    sudo nginx -s stop
+    echo "nginx stopped successfully."
+fi
