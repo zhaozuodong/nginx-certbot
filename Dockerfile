@@ -8,7 +8,8 @@ RUN /usr/local/bin/certbot_expect.sh
 
 COPY cronjob /etc/cron.d/cronjob
 RUN chmod +x /etc/cron.d/certbot && chmod +x /etc/cron.d/cronjob
-#RUN crontab /etc/cron.d/certbot && crontab /etc/cron.d/cronjob && service cron start
 
 EXPOSE 80
 EXPOSE 443
+
+CMD certbot_expect.sh && cron -f
