@@ -25,10 +25,6 @@ expect {
         exp_continue
     }
     "Do you want to expand and replace this existing certificate with" {
-        send "\n"
-        exp_continue
-    }
-    "(E)xpand/(C)ancel" {
         send "E\n"
         exp_continue
     }
