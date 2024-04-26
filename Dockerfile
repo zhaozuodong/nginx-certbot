@@ -4,6 +4,7 @@ RUN apt-get update && apt-get install -y certbot python3-certbot-nginx expect vi
 
 COPY domain.sh /docker-entrypoint.d/01-domain.sh
 COPY certbot.exp /docker-entrypoint.d/certbot.exp
+RUN sed -i 's/expect certbot.exp/expect \/docker-entrypoint.d\/certbot.exp/g' /docker-entrypoint.d/01-domain.sh
 RUN chmod 777 /docker-entrypoint.d/01-domain.sh && chmod 777 /docker-entrypoint.d/certbot.exp
 
 EXPOSE 80

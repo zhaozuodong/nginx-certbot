@@ -28,7 +28,7 @@ done
 
 
 for server_name in "${servers[@]}"; do
-    expect /docker-entrypoint.d/certbot.exp $server_name
+    expect certbot.exp $server_name
 done
 
 if [[ $(service cron status) == "cron is running." ]]; then
