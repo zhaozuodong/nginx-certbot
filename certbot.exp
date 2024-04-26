@@ -2,7 +2,21 @@
 
 set timeout -1
 
-spawn certbot --nginx --register-unsafely-without-email
+set args [lindex $argv 0]
+set split_args [split $args " "]
+
+set command "/usr/bin/certbot"
+set domain_args [list]
+
+foreach arg $split_args {
+    if {[string match "-d *" $arg]} {
+        lappend domain_args $arg
+    } else {
+        lappend domain_args $arg
+    }
+}
+
+spawn $command {*}$split_args
 
 expect {
     "No names were found in your configuration files" {
