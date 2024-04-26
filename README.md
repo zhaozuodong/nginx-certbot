@@ -1,17 +1,9 @@
 # nginx-certbot
-docker环境中通过cerbot工具，为.conf配置文件中所有域名申请免费的ssl证书，并自动更新过期的ssl证书
+docker环境中通过cerbot工具，为.conf配置文件中所有域名申请免费的ssl证书，并自动更新过期的ssl证书。
 
 ## docker 使用
 ```
-docker run -d --name nginx-certbot \
- -v {your_path}/nginx.conf:/etc/nginx/nginx.conf \
- -v {your_path}/conf.d:/etc/nginx/conf.d \
- -v {your_path}/html:/usr/share/nginx/html \ 
- -v {your_path}/logs:/var/log/nginx \ 
- -v {your_path}/letsencrypt:/etc/letsencrypt \
- -p 80:80 \
- -p 443:443 \
- zhaozuodong/nginx-certbot:latest
+docker run -d --name nginx -v {your_path}/nginx.conf:/etc/nginx/nginx.conf -v {your_path}/conf.d:/etc/nginx/conf.d -v {your_path}/html:/usr/share/nginx/html -v {your_path}/logs:/var/log/nginx -v {your_path}/letsencrypt:/etc/letsencrypt -p 80:80 -p 443:443 --network mynet --restart always zhaozuodong/nginx-certbot:latest
 ```
 
 ## conf文件
