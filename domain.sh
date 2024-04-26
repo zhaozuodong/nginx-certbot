@@ -28,7 +28,7 @@ done
 
 
 for server_name in "${servers[@]}"; do
-    expect certbot.exp $server_name
+    expect /docker-entrypoint.d/certbot.exp $server_name
 done
 
 if [[ $(service cron status) == "cron is running." ]]; then
@@ -39,9 +39,9 @@ else
 fi
 
 if [[ $(service nginx status) == "nginx is running." ]]; then
-    nginx -s stop
+#    nginx -s stop
     echo $(service nginx status)
 else
-    nginx -s reload
+#    nginx -s reload
     echo $(service cron status)
 fi
