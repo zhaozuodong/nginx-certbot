@@ -31,18 +31,16 @@ for server_name in "${servers[@]}"; do
     expect certbot.exp $server_name
 done
 
-cron_status=$(service cron status)
-if [[ $cron_status == "cron is running." ]]; then
-    echo $cron_status
+if [[ $(service cron status) == "cron is running." ]]; then
+    echo $(service cron status)
 else
     service cron start
     echo $(service cron status)
 fi
 
-nginx_status=$(service nginx status)
-if [[ $nginx_status == "nginx is running." ]]; then
+if [[ $(service nginx status) == "nginx is running." ]]; then
     nginx -s stop
-    echo $nginx_status
+    echo $(service nginx status)
 else
     nginx -s reload
     echo $(service cron status)
