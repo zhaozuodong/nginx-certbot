@@ -21,8 +21,12 @@ for server_name in "${parts[@]}"; do
         fi
     done
     if [ $found -eq 0 ]; then
-        domains+=("$domain")
-        servers+=("--nginx --register-unsafely-without-email -d $domain -d $server_name")
+        if echo "$domain" | grep -E -q 'localhost|127\.0\.0\.1|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[01])\.|127\.|^$'; then
+            echo "domain contains localhost or 127.0.0.1"
+        else
+            domains+=("$domain")
+            servers+=("--nginx --register-unsafely-without-email -d $domain -d $server_name")
+        fi
     fi
 done
 
