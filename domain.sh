@@ -15,14 +15,14 @@ for server_name in "${parts[@]}"; do
         if [ "${domains[$dm]}" == "$domain" ]; then
             found=1
             if [ "$server_name" != "$domain" ]; then
-                servers[$dm]="--nginx --register-unsafely-without-email ${servers[$dm]} -d $server_name"
+                servers[$dm]="${servers[$dm]} -d $server_name"
             fi
             break
         fi
     done
     if [ $found -eq 0 ]; then
         domains+=("$domain")
-        servers+=("-d $domain -d $server_name")
+        servers+=("--nginx --register-unsafely-without-email -d $domain -d $server_name")
     fi
 done
 
