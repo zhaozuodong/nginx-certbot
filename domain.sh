@@ -43,5 +43,5 @@ if [[ $(service nginx status) == "nginx is running." ]]; then
     echo $(service nginx status)
 else
 #    nginx -s reload
-    echo $(service cron status)
+    echo $(service nginx status)
 fi
